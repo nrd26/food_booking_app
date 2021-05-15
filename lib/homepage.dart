@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_booking_app/carousel.dart';
+// import 'package:food_booking_app/item_list.dart';
+import 'package:food_booking_app/search.dart';
+import 'package:food_booking_app/tabs.dart';
 import 'placeholder_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               text: TextSpan(
                 text: "Fo",
                 style: TextStyle(
-                  color: Colors.lightBlueAccent,
+                  color: Colors.redAccent[400],
                   fontSize: 22,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold
@@ -56,58 +61,50 @@ class _HomePageState extends State<HomePage> {
       ),
 
       body: Container(
-        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children:<Widget>[
-              Text("Add the following:",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  fontSize: 24
+              Search(),
+              Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                child: Text(
+                  'Offers and Discounts',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+
                 ),
               ),
-              Text("1. Search",
-              style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
-              Text("2. Carousel(coupons, meal discounts, newest and other offers)",
-                style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
-              Text("3. Tabs for Combos, cuisines",
-                style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
+
+              Carousel(),
+              CategoryList(),
+              // ItemList()
+
             ]
 
           )
-        ),
+
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.lightBlueAccent,
+        selectedItemColor: Colors.redAccent[400],
         unselectedItemColor: Colors.white,
         items:[
           BottomNavigationBarItem(
             icon: new Icon(Icons.home),
-            title: new Text("Home"),
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon:  new Icon(Icons.fastfood),
-            title: new Text("Your Order"),
+            label: "Your Order",
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.explore),
-            title: new Text("Explore")
+            label:"Explore"
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.person),
-            title: new Text("Profile")
+            label:"Profile"
           )
         ],
       ),
@@ -119,3 +116,27 @@ class _HomePageState extends State<HomePage> {
     });
   }
 }
+
+
+
+// Text("Add the following:",
+//   style: TextStyle(
+//       fontWeight: FontWeight.bold,
+//     fontSize: 24
+//   ),
+// ),
+// Text("1. Search",
+// style: TextStyle(
+//       fontSize: 20
+//   ),
+// ),
+// Text("2. Carousel(coupons, meal discounts, newest and other offers)",
+//   style: TextStyle(
+//       fontSize: 20
+//   ),
+// ),
+// Text("3. Tabs for Combos, cuisines",
+//   style: TextStyle(
+//       fontSize: 20
+//   ),
+// ),
